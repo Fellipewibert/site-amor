@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>FELIZ DIA 24 DE FEVEREIRO 💖</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    text-align: center;
+    color: white;
+    overflow-x: hidden;
+}
+
+h1 {
+    margin-top: 40px;
+    font-size: 2.5em;
+    animation: fadeIn 2s ease;
+}
+
+.heart {
+    position: fixed;
+    font-size: 24px;
+    animation: float 6s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh) scale(0.5); }
+    100% { transform: translateY(-10vh) scale(1.2); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    animation: fadeIn 3s ease;
+}
+
+.texto {
+    font-size: 1.3em;
+    margin: 30px 20px;
+    line-height: 1.6;
+    background: rgba(255,255,255,0.15);
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.fotos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.fotos img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
+}
+
+.fotos img:hover {
+    transform: scale(1.05);
+}
+
+.btn-play {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 1em;
+    border: none;
+    border-radius: 30px;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.btn-play:hover {
+    background: #ff1e4d;
+    transform: scale(1.05);
+}
+
+footer {
+    margin: 40px 0;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.heart-click {
+    position: fixed;
+    font-size: 24px;
+    pointer-events: none;
+    animation: explodir 1s ease-out forwards;
+}
+
+@keyframes explodir {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(2) translateY(-80px); opacity: 0; }
+}
+
+#typing-text {
+    font-size: 1.8em;
+    margin-top: 30px;
+    min-height: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>💖 Nosso Primeiro Beijo 💖</h1>
+
+<div class="container">
+    
+    <button class="btn-play" onclick="tocarMusica()">▶️ Aperte aqui</button>
+    <h2 id="contador">Nosso primeiro beijo foi a...</h2>
+
+    <div class="texto">
+        felizzz nosso primeiro beijo meu amorr 4 ANOSSS <br><br>
+
+hoje eu estava fazendo as contas e eu até me assustei quando vi que já fazem 4 anos desde aquele dia e por incrível que parece, nunca saiu da memória. me lembro como se fosse ontem que estávamos naquele corredor, os dois tremendo ( eu mais né) e depois um abraço sincero e um eu te amo mais ainda, esse dia está gravado na minha memória para sempre. obrigado por ser a mulher da minha vida, obrigado por me aguentar tanto e obrigado por me fazer o homem mais feliz do mundo, você não sabe o prazer que é ser seu namorado. obrigado por todos os momentos juntos, eu mal posso esperar para continuar essa história linda que estamos escrevendo juntos, obrigado por todos os momentos meu amor ❤️
+    </div>
+
+    <div class="fotos">
+        <img src="foto1.jpg">
+        <img src="foto2.jpg">
+        <img src="foto3.jpg">
+    </div>
+
+    <!-- TEXTO DIGITANDO -->
+    <p id="typing-text"></p>
+
+</div>
+
+<footer>
+    PARA MINHA BAIXINHA 💞
+</footer>
+
+<audio id="musica" loop>
+    <source src="perfect.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function tocarMusica() {
+    document.getElementById("musica").play();
+}
+
+// Corações flutuando
+function criarCoracao() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}
+setInterval(criarCoracao, 500);
+
+// Contador de tempo
+const dataInicio = new Date("2022-02-24 00:00:00");
+
+function atualizarContador() {
+    const agora = new Date();
+    const diferenca = agora - dataInicio;
+
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+    const segundos = Math.floor((diferenca / 1000) % 60);
+
+    document.getElementById("contador").innerHTML =
+        `💞 nosso primeiro beijo foi a... ${dias} dias, ${horas}h ${minutos}m ${segundos}s 💞`;
+}
+setInterval(atualizarContador, 1000);
+atualizarContador();
+
+// Explosão de corações ao clicar
+document.addEventListener("click", function(e) {
+    for (let i = 0; i < 15; i++) {
+        const heart = document.createElement("div");
+        heart.innerHTML = "💖";
+        heart.classList.add("heart-click");
+        heart.style.left = e.clientX + "px";
+        heart.style.top = e.clientY + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1000);
+    }
+});
+
+// TEXTO DIGITANDO SOZINHO
+const text = "Eu te amo daqui até as estrelas ❤️";
+let i = 0;
+
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("typing-text").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+    }
+}
+
+window.addEventListener("load", typeWriter);
+</script>
+
+</body>
+</html>
