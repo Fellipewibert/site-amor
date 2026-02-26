@@ -152,10 +152,15 @@ hoje eu estava fazendo as contas e eu até me assustei quando vi que já fazem 4
 <audio id="musica" loop>
     <source src="perfect.mp3" type="audio/mpeg">
 </audio>
-
+    
 <script>
 function tocarMusica() {
-    document.getElementById("musica").play();
+    const musica = document.getElementById("musica");
+    musica.currentTime = 0;
+    musica.play().catch(err => {
+        alert("Erro ao tocar música: " + err);
+        console.log(err);
+    });
 }
 
 // Corações flutuando
@@ -218,3 +223,4 @@ window.addEventListener("load", typeWriter);
 
 </body>
 </html>
+
